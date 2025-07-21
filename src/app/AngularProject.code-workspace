@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "AngularPractice",
+			"path": "../../AngularPractice"
+		},
+		{
+			"name": "AngularPractice",
+			"path": "../../../../../source/repos/AngularPractice"
+		}
+	],
+	"settings": {}
+}
