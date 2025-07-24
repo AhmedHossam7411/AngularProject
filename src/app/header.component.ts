@@ -4,8 +4,10 @@ import { Component } from '@angular/core';
     {
     selector: 'app-header',  // defines the custom HTML tag for this component
     standalone: true,  // indicates that this component can be used independently
-    template: './header.component.html',  // contains the HTML template for the header
-    }
+    templateUrl: './header.component.html',  // path to the HTML template for this component
+    styleUrl: './header.component.css'  // path to the CSS styles for this component
+
+}
 )
 
 export class HeaderComponent {}  
