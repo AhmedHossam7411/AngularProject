@@ -4,7 +4,8 @@
 <app-header/>
 <main>
   <ul id="users">
-    @for (user of Users; track $index) {
+    @for (user of Users; track $index) {   <!-- Loop through the Users array -->
+      <!-- Use the app-user component to display each user -->
 
       <app-user 
         [avatar]="user.avatar"
@@ -14,7 +15,7 @@
       />
 }
   </ul>
-  <app-tasks [name]="selectedUsers.name"/> 
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"/> 
 </main>
 
 
