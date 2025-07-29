@@ -10,38 +10,11 @@
         [avatar]="user.avatar"
         [id]="user.id"
         [name]="user.name"
-      
+        (userSelected)="onUserSelected(user.id)"
       />
 }
-
-    <li>   
-      <app-user 
-      [avatar]="dummyUsers[0].avatar "
-      [id]="dummyUsers[0].id"
-      [name]="dummyUsers[0].name"/>
-    </li>
-     <li>   
-       <app-user 
-      [avatar]="dummyUsers[1].avatar "
-      [id]="dummyUsers[1].id"
-      [name]="dummyUsers[1].name"
-      
-      />
-    </li>
-     <li>   
-       <app-user 
-      [avatar]="dummyUsers[2].avatar "
-      [id]="dummyUsers[2].id"
-      [name]="dummyUsers[2].name"/>
-     </li>
-     <li>   
-       <app-user 
-      [avatar]="dummyUsers[3].avatar "
-      [id]="dummyUsers[3].id"
-      [name]="dummyUsers[3].name"/>
-    </li>
   </ul>
-  <app-tasks name=""/>
+  <app-tasks [name]="selectedUsers.name"/>
 </main>
 
 
