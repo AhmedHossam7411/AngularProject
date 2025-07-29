@@ -4,17 +4,17 @@
 <app-header/>
 <main>
   <ul id="users">
-    @for (user of dummyUsers; track $index) {
+    @for (user of Users; track $index) {
 
       <app-user 
         [avatar]="user.avatar"
         [id]="user.id"
         [name]="user.name"
-        (userSelected)="onUserSelected(user.id)"
+        (select)="onUserSelected(user.id)"
       />
 }
   </ul>
-  <app-tasks [name]="selectedUsers.name"/>
+  <app-tasks [name]="selectedUsers.name"/> 
 </main>
 
 
