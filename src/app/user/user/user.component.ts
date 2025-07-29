@@ -20,7 +20,7 @@ export class UserComponent {
      @Input() name!: string; // Define an input property to receive the name from the parent component
      @Input() id!: string;  // Define an input property to receive the id from the parent component
      
-     @Output() select = new EventEmitter(); // Define an output event to emit when a user is selected
+     @Output() select = new EventEmitter<string>(); // Define an output event to emit when a user is selected
      
      onSelectUser(id : string){  // we have to tell typescript that this method will receive a string parameter
          this.select.emit(this.id); // Emit the selected user when the method is called
