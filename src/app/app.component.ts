@@ -4,6 +4,8 @@ import { HeaderComponent } from "./header.component";
 import { UserComponent } from "./user/user/user.component";
 import { DUMMY_USERS } from './dummy-users';
 import { TasksComponent } from './tasks/tasks.component/tasks.component';
+import { tasksArray } from './tasks/tasks/task/task.model';
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,10 @@ import { TasksComponent } from './tasks/tasks.component/tasks.component';
   styleUrls: ['./app.css']
 })
 export class AppComponent {
-  protected readonly title = signal('AngularProject');
+
+
+
+  //protected readonly title = signal('AngularProject');
   selectedUserId='u1'; // Default selected user ID
 
   onUserSelected(userId: string) { 

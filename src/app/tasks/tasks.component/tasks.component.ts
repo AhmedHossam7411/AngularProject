@@ -1,45 +1,32 @@
-import { Component , Input } from '@angular/core';
+import { Component , EventEmitter, Input, Output } from '@angular/core';
 import { TaskComponent } from "../tasks/task/task.component";
-
+import { OutletContext } from '@angular/router';
+import { tasksArray } from '../tasks/task/task.model';
+import { NewTask } from '../new-task/new-task';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTask],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
   @Input({required : true}) userId!:string;  // The id of the user to whom the tasks belong
   @Input({required : true}) name!:string;  // The name of the user 
-  tasks = [
-    {
-    id: 't1',
-    userId: 'u1',
-    title: 'Master Angular',
-    summary:
-      'Learn all the basic and advanced features of Angular & how to apply them.',
-    dueDate: '2025-12-31',
-  },
-  {
-    id: 't2',
-    userId: 'u3',
-    title: 'Build first prototype',
-    summary: 'Build a first prototype of the online shop website',
-    dueDate: '2024-05-31',
-  },
-  {
-    id: 't3',
-    userId: 'u3',
-    title: 'Prepare issue template',
-    summary:
-      'Prepare and describe an issue template which will help with project management',
-    dueDate: '2024-06-15',
-  },
-  ]
+  @Output() addTask :EventEmitter<string>=new EventEmitter<string>() ;  // The name of the user 
+  localTasks = tasksArray; // Local copy of tasks array to be used in the component
+  isAddingTask = false; // Flag to indicate if a task is being added
   selectedUserTasks() {
-    return this.tasks.filter(task => task.userId === this.userId);
+    return  this.localTasks.filter(task => task.userId === this.userId);
   }
   onCompleteTask(taskId: string) {
-      this.tasks= this.tasks.filter((task) => task.id !== taskId); // Remove the completed task from the tasks array
+  this.localTasks=    tasksArray.filter((task) => task.id !== taskId); // Remove the completed task from the tasks array
+  }
+  onAddingTask() {
+    this.isAddingTask = true; // Set the flag to true to indicate a task is being added
+    
+  }
+  onCancelAddTask() {
+    this.isAddingTask = false; // Set the flag to false to indicate task addition is cancelled
   }
 }
