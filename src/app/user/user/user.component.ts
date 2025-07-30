@@ -1,7 +1,9 @@
 import { Component,Input , Output , EventEmitter } from '@angular/core';
 import { DUMMY_USERS } from '../../dummy-users';
+import { User } from './user.model'; // Importing the User model
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length); // Get a random index from the DUMMY_USERS array
+
 
 @Component({
   selector: 'app-user',
@@ -21,6 +23,8 @@ export class UserComponent {
      @Input() id!: string;  //  to receive the id from the parent component
      
      @Output() select = new EventEmitter<string>(); // Define an output event to emit when a user is selected
+     
+     @Input({required : true}) selected!: boolean; //  to receive the selected state from the parent component
      
      onSelectUser(id : string){  // we have to tell typescript that this method will receive a string parameter
          this.select.emit(this.id); // Emit the selected user when the method is called
