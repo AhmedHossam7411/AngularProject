@@ -4,7 +4,15 @@
   <form>
     <p>
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" />
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle" />  
+      <!--//ngModel is used for two-way data binding , helps in extracting or changing user input , its a "directive" => has no template-->
+    </p>
+       
+     <!-- now as we input title , title2 is outputted , thats two way binding  -->
+     <p> 
+      <label for="title2">Title2</label>
+      <input type="text" id="title2" name="title2" [(ngModel)]="enteredTitle" />  
+      <!--//ngModel is used for two-way data binding , helps in extracting or changing user input , its a "directive" => has no template-->
     </p>
 
     <p>
