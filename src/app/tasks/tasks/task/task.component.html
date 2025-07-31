@@ -1,7 +1,7 @@
 <article>
  <h2>{{taskInput.title}}</h2>
  <h3>{{taskInput.summary}}</h3>
- <time>Task Due Date : {{taskInput.dueDate}}</time>
+ <time>Task Due Date : {{taskInput.dueDate | date:'fullDate'}}</time>  <!--// Display the due date of the task in full date-->
  <p class ="actions">
     <button (click)="onCompleteTask()">Complete</button>
  </p>
