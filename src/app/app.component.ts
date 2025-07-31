@@ -23,7 +23,7 @@ export class AppComponent {
   onUserSelected(userId: string) { 
     this.selectedUserId = userId; // Update the selected user ID when a user is selected
    }
-  get selectedUser() {console.log(this.selectedUserId);
+  get selectedUser() {
     return DUMMY_USERS.find(user => user.id === this.selectedUserId)!;
   }
  

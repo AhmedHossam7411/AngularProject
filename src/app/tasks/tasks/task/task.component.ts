@@ -8,6 +8,12 @@ import { Task } from './task.model'; // Importing the Task model
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
+  /**
+   *
+   */
+  constructor() {
+    
+  }
    @Input({required:true}) taskInput!: Task; // The task object to be displayed
    @Output() complete = new EventEmitter<string>(); // Define an output event to emit when the task is completed
   

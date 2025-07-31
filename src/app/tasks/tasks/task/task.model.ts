@@ -6,6 +6,12 @@ export interface Task {
   dueDate: string;
 } 
 
+export interface newTaskObject {
+  title: string,
+  summary: string,
+  dueDate: string,
+}
+
 export const tasksArray = [
     {
     id: 't1',
