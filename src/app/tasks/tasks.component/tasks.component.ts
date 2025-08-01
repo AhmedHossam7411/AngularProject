@@ -1,13 +1,15 @@
-import { Component , EventEmitter, Input, Output } from '@angular/core';
+import { Component , EventEmitter, Input, Output ,inject } from '@angular/core';
 import { TaskComponent } from "../tasks/task/task.component";
 import { OutletContext } from '@angular/router';
 import { tasksArray } from '../tasks/task/task.model';
 import { newTaskObject } from '../tasks/task/task.model';
 import { NewTask } from '../new-task/new-task';
+import { Card } from "../../shared/card/card";
+import { taskservices } from '../task.services';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent,NewTask],
+  imports: [TaskComponent, NewTask, Card,],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -19,13 +21,15 @@ export class TasksComponent {
   
   localTasks = tasksArray; // Local copy of tasks array to be used in the component
   isAddingTask = false;    // Flag to indicate if a task is being added
-  
+ 
+  private taskService = inject(taskservices); // DI Injecting the task service to get user tasks 
+  // , one instance of the service is created and used throughout all components that use it
 
   selectedUserTasks() {
-    return  this.localTasks.filter(task => task.userId === this.userId);
+    return  this.taskService.getUserTasks(this.userId); // Fetching tasks for the specific user by service class
   }
   onCompleteTask(taskId: string) {
-  this.localTasks=    tasksArray.filter((task) => task.id !== taskId); // Remove the completed task from the tasks array
+  return  this.taskService.onCompleteTask(taskId)// Remove the completed task from the tasks array
   }
   onAddingTask() {
     this.isAddingTask = true; // Set the flag to true to indicate a task is being added
@@ -35,16 +39,7 @@ export class TasksComponent {
     this.isAddingTask = false; // Set the flag to false to indicate task addition is cancelled
   }
   onSubmitTask(task: newTaskObject) {
-    
-
-    this.localTasks.unshift({
-      id: Math.random().toString(),
-      title: task.title,
-      summary: task.summary,
-      dueDate: task.dueDate,
-      userId: this.userId
-});
-    this.isAddingTask = false; // Set the flag to false to indicate task addition is completed
-   
-  }
+  this.taskService.onSubmitTask(task, this.userId);
+  this.isAddingTask = false; // Set the flag to false to indicate task addition is completed
+  }     // Submit the new task using the service
 }

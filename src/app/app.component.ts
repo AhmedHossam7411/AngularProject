@@ -7,9 +7,10 @@ import { TasksComponent } from './tasks/tasks.component/tasks.component';
 import { tasksArray } from './tasks/tasks/task/task.model';
 
 
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent,UserComponent,TasksComponent],
+  imports: [RouterOutlet, HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
